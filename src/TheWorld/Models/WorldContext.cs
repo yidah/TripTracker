@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+namespace TheWorld.Models
+{
+    public class WorldContext: IdentityDbContext<WorldUser>
+    {
+        private IConfigurationRoot config { get; set; }
+
+        public WorldContext(IConfigurationRoot config, DbContextOptions options)
+            :base(options)
+        {
+            this.config = config;
+        }
+
+        public DbSet<Trip> Trips { get; set; }
+        public DbSet<Stop> Stops { get; set; }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseSqlServer(this.config["ConnectionStrings:WorldContextConnection"]);
+        }
+    }
+}

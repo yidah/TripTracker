@@ -1,0 +1,81 @@
+﻿/*site.css*/        
+/*body{
+            font-family:sans-serif;
+            font-size:14px;
+            margin:0px;
+        }
+
+label{
+    font-weight:bold;
+    display:block;
+}
+
+input[type=text], input[type=password], textarea{
+    width:150px;
+}*/
+
+/*#main{
+    background-color:#eee;
+    padding:4px;
+    margin:0px;
+}
+
+#footer{
+    background-color:#222;
+    color:#eee;
+    padding:8px 5px;
+    position:fixed;
+    width:100%;
+    bottom:0;
+}*/
+
+.headshot {
+    max-width:50px;
+    border:1px solid #222;
+    padding:3px;
+}
+.menu{ 
+    font-size:12px;
+}
+
+.menu li{
+    list-style-type:none;
+
+}
+
+/*I want li who have the class active no child elements so I do not have space between li and .active */ 
+.menu li.active{
+    font-weight:bold;
+}
+
+#sidebar{
+    background:#2a2c36;
+    color:#eee;
+    position:fixed;
+    height:100%;
+    width:250px;
+    overflow:hidden;
+    left:0;
+    margin:0;
+    transition:left ease .25s;
+}
+
+#wrapper{
+margin-left:250px;
+transition:margin-left ease .25s;
+}
+
+#sidebar.hide-sidebar{
+    left:-250px;
+    transition:left ease .25s;
+}
+
+#wrapper.hide-sidebar{
+    margin-left:0px;
+    transition:margin-left ease .25s;
+}
+
+#map{
+    width:100%;
+    height:600px;
+}

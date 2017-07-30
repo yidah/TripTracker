@@ -1,0 +1,87 @@
+{
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "version": "1.0.1",
+      // delete the line below if you wan to deploy as self-contained
+      // when publishing(run command line alt + space) run:
+      // dotnet publish -o c:\directorytobedeploy -r win81-x64
+      "type": "platform"
+    },
+    "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
+    "Microsoft.Extensions.Logging.Console": "1.0.0",
+    "Microsoft.AspNetCore.StaticFiles": "1.0.0",
+    "Microsoft.AspNetCore.Mvc": "1.0.0",
+    "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.EntityFrameworkCore": "1.0.1",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
+    "Microsoft.EntityFrameworkCore.Tools": {
+      "type": "build",
+      "version": "1.0.0-preview3-final"
+    },
+    "Microsoft.EntityFrameworkCore.Design": {
+      "version": "1.0.1",
+      "type": "build"
+    },
+    "Microsoft.Extensions.Logging.Debug": "1.0.0",
+    "AutoMapper": "4.2.1",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0"
+  },
+
+  "tools": {
+    "Microsoft.EntityFrameworkCore.Tools.DotNet": "1.0.0-preview3-final"
+  },
+  "Microsoft.EntityFrameworkCore.Tools": {
+    "version": "1.0.0-preview3-final",
+    "imports": [
+      "portable-net45+win8+dnxcore50",
+      "portable-net45+win8"
+    ]
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+        "dotnet5.6",
+        "portable-net45+win8"
+      ]
+    }
+  },
+
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true
+  },
+
+  "runtimeOptions": {
+    "configProperties": {
+      "System.GC.Server": true
+    }
+  },
+
+  // use runtimes when we will deploy as self-contained you can used it 
+  // by deleting the type property in dependencies
+  "runtimes": {
+    "win81-64": {
+
+    }
+
+  },
+
+  "publishOptions": {
+    "include": [
+      "wwwroot",
+      "web.config",
+      "Views",
+      "config.json"
+    ]
+  },
+
+  "scripts": {
+    "prepublish": [ "npm install", "bower install" ],
+    "prepare": "gulp minify",
+    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+  }
+}
